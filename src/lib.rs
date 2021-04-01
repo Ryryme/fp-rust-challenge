@@ -1,7 +1,7 @@
 
 // A struct implementing TicTacToe represents a game of TicTacToe.
 // This game may be ongoing, or it may have been finished.
-trait TicTacToe: std::fmt::Display + Clone {
+pub trait TicTacToe: std::fmt::Display + Clone {
   type Player;  // Some type indicating something like either the X player, O player, or empty/tie
   type Error;   // Some type indicating potential errors that may be returned from functions
 
@@ -26,7 +26,7 @@ trait TicTacToe: std::fmt::Display + Clone {
 }
 
 // Write a struct to store game state, and
-struct Game {
+pub struct Game {
   ...
 }
 
