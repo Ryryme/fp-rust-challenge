@@ -25,19 +25,22 @@ trait TicTacToe: std::fmt::Display + Clone {
   fn reset(&mut self);
 }
 
-
-// Given the TicTacToe trait, create a struct that implements TicTacToe.
+// Write a struct to store game state, and
 struct Game {
+  ...
+}
 
+// Implement the TicTacToe trait for your Game struct
+impl TicTacToe for Game {
+  ...
 }
 
 
-
-// Write some unit tests for the TicTacToe game.
+// Write some unit tests for the TicTacToe game to exhibit basic game functionality.
 #[cfg(test)]
 mod tests {
   #[test]
-  fn it_works() {
-    assert_eq!(2 + 2, 4);
+  fn can_create_game() {
+    let _game = Game::new();
   }
 }
