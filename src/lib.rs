@@ -1,9 +1,10 @@
+use std::fmt;
 
 // A struct implementing TicTacToe represents a game of TicTacToe.
 // This game may be ongoing, or it may have been finished.
-pub trait TicTacToe: std::fmt::Display + Clone {
-  type Player;  // Some type indicating something like either the X player, O player, or empty/tie
-  type Error;   // Some type indicating potential errors that may be returned from functions
+pub trait TicTacToe: fmt::Display + Clone {
+  type Player; // Some type indicating something like either the X player, O player, or empty/tie
+  type Error; // Some type indicating potential errors that may be returned from functions
 
   // Static method creating a new instance of a struct implementing TicTacToe
   // At the start of the game, it should be the X player's turn.
@@ -25,9 +26,18 @@ pub trait TicTacToe: std::fmt::Display + Clone {
   fn reset(&mut self);
 }
 
-// Write a struct to store game state, and
+// Write a struct to store game state
+#[derive(Clone)]
 pub struct Game {
   ...
+}
+
+impl fmt::Display for Game {
+  fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+    // Implement a display function which can be used to print the board state in a
+    // human-readable manner
+    ...
+  }
 }
 
 // Implement the TicTacToe trait for your Game struct
@@ -35,10 +45,12 @@ impl TicTacToe for Game {
   ...
 }
 
-
 // Write some unit tests for the TicTacToe game to exhibit basic game functionality.
 #[cfg(test)]
 mod tests {
+  use super::Game;
+  use super::TicTacToe;
+
   #[test]
   fn can_create_game() {
     let _game = Game::new();
