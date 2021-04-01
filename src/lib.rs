@@ -42,5 +42,6 @@ mod tests {
   #[test]
   fn can_create_game() {
     let _game = Game::new();
+    // Can use assert_eq!() and other assert macros to check game functionality
   }
 }
